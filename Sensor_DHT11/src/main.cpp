@@ -31,5 +31,5 @@ void loop()
   Serial.print("Humidity = ");
   Serial.println(DHT.humidity);
   nextionSerial.println(Humed.setValue(DHT.humidity));
-  delay(2000);
+  delay(3000);
 }
