@@ -1,25 +1,29 @@
+/*
+ Para mayor descripcion de las funciones de la libreria Neonextion visitar
+ https://dannixon.github.io/NeoNextion/index.html
+ por la libreria dht, ver archivos dht.h y dht.cpp ṕara mayor explicacion
+ */
 #include <Arduino.h>
 #include <dht.h>
 #include <Nextion.h>
 #include <NextionPage.h>
 #include <NextionNumber.h>
 #include <SoftwareSerial.h>
-//Crear variable puerto serie "nextionSerial"
+//******NEXTION*********Lib: Neonextion********************
 SoftwareSerial nextionSerial(8, 9); // RX, TX
-Nextion nex(nextionSerial);
-//Crear variables para el manejo de los objetos en la pantalla
+Nextion nex(nextionSerial);//Variable del puerto serie
 NextionPage pgNumber(nex, 0, 0, "main");
-NextionNumber Temp(nex, 0, 4, "nTemp");
-NextionNumber Humed(nex, 0, 5, "nHumed");
+NextionNumber Temp(nex, 0, 4, "nTemp");//Variable temperatura en pantalla
+NextionNumber Humed(nex, 0, 5, "nHumed");//Variable Humedad en pantalla
 //Sensor DHT
 dht DHT;
 #define DHT11_PIN 2
 //Inicio de codigo
 void setup(){
-  Serial.begin(9600);
-  nextionSerial.begin(9600);
+  Serial.begin(9600);//Puerto hardware
+  nextionSerial.begin(9600);//Puerto software para la nextion
   nex.init();
-nextionSerial.println(pgNumber.show());
+nextionSerial.println(pgNumber.show());//Funcion para mostrar una pantalla
 }
 
 void loop()
